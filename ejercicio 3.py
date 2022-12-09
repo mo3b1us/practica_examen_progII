@@ -12,37 +12,54 @@ posición existe en la lista lo añade a ella (la posición se pide a partir de 
 8. Mostrar números: Muestra los números de la lista
 9. Salir """
 
+
 def insertar_inicio(numeros):
-    numeros.insert(0,int(input("Introduzca el número a añadir: ")))
+    numeros.insert(0, int(input("Introduzca el número a añadir: ")))
     return
+
 
 def insertar_posicion(numeros):
     numeros.insert(int(input("Introduzca la posición el la que añadir el número (empezando por el 1): ")) - 1,
-    int(input("Introduzca el número a añadir: ")))
+                   int(input("Introduzca el número a añadir: ")))
     return
+
 
 def longitud(numeros):
-    print(f"La longitud de la lista (empezando por el 0) es: {len(numeros)}")
+    print(f"La longitud de la lista es: {len(numeros)}")
+    return
+
 
 def eliminar_ultimo(numeros):
-    numeros.pop(len(numeros))
+    numeros.pop(len(numeros) - 1)
     return
+
 
 def eliminar_posicion(numeros):
     try:
         numeros.pop(int(input("Introduzca la posición a eliminar (empezando por el 1):")) - 1)
-    except IndexError: print("Índice fuera del rango")
+    except IndexError:
+        print("Índice fuera del rango")
     return
+
 
 def contar(numeros):
     numeros.count(int(input("Introduzca el número a contar: ")))
+    return
+
 
 def posiciones(numeros):
     numero_buscar = int(input("Número a buscar y sacar posiciones: "))
-    print([idx + 1 for idx, numero in enumerate(numeros) if numero == numero_buscar])
+    if numero_buscar in numeros:
+        print(f"Lista con las posiciones en las que aparece el {numero_buscar}: ")
+        print([idx + 1 for idx, numero in enumerate(numeros) if numero == numero_buscar])
+    else:
+        print("El numero a buscar no estaba en la lista.")
+    return
+
 
 def mostrar(numeros):
     print(numeros)
+    return
 
 
 def main():
@@ -51,7 +68,7 @@ def main():
     while opc != "9":
         print("""Menu principal
     
-    1. Añadir número a la lista: Me pide un número de la lista y lo añade al final de la lista.
+1. Añadir número a la lista: Me pide un número de la lista y lo añade al final de la lista.
 2. Añadir número de la lista en una posición: Me pide un número y una posición, y si la
 posición existe en la lista lo añade a ella (la posición se pide a partir de 1).
 3. Longitud de la lista: te muestra el número de elementos de la lista.
@@ -81,6 +98,7 @@ posición existe en la lista lo añade a ella (la posición se pide a partir de 
         opciones.get(opc, opciones["default"])()  # llamada a la función que obtenemos a partir de la clave opc
         print()  # Simplemente, añado una línea para que quede separado
     return
+
 
 if __name__ == '__main__':
     main()
