@@ -11,13 +11,12 @@ de cada Objeto (Marca, color, ruedas y en marcha o no.)"""
 
 
 class motocicleta:
-    motor = False
-
-    def __init__(self, color, matricula, numero_ruedas, marca):
+    def __init__(self, color, matricula, numero_ruedas, marca, motor = False):
         self.marca = marca
         self.color = color
         self.matricula = matricula
         self.numero_ruedas = numero_ruedas
+        self.motor = motor
 
     def arrancar(self):
         if self.motor:
@@ -34,7 +33,7 @@ def main():
     print("Primera motocicleta:")
     motocicleta_kawasaki.arrancar()
     motocicleta_kawasaki.estado()
-    print("Segunda motocicleta:")
+    print("-------------------------\nSegunda motocicleta:")
     motocicleta_harley.arrancar()
     motocicleta_harley.estado()
 
