@@ -37,8 +37,14 @@ def main():
     # Obtenemos el total de kms de cada corredor con la propiedad total_kms
     total_kms = [corredor.total_kms for corredor in corredores]
 
+    print("Corredores:")
     for corredor in corredores:
         print(corredor)
+
+    print("\nCorredor de ejemplo")
+    print(f"{corredores[0].nombre} corrió:")
+    for dia, km in corredores[0].kms_dia.items():
+        print(f"{km} kilómetros el {dia}")
     return
 
 
