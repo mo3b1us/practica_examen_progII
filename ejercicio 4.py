@@ -11,31 +11,45 @@ de cada Objeto (Marca, color, ruedas y en marcha o no.)"""
 
 
 class motocicleta:
-    def __init__(self, color, matricula, numero_ruedas, marca, motor = False):
-        self.marca = marca
+    def __init__(self, color, matricula, numero_ruedas, marca, en_marcha=False):
         self.color = color
         self.matricula = matricula
         self.numero_ruedas = numero_ruedas
-        self.motor = motor
+        self.marca = marca
+        self.en_marcha = en_marcha
 
     def arrancar(self):
-        if self.motor:
-            print("Esta en marcha")
-        else: print("Esta parada")
-    
+        self.en_marcha = True
+        return
+
     def estado(self):
-        print("Marca:", self.marca, "\nColor:", self.color, "\nMatricula:", self.matricula, "\nNumero de ruedas:", self.numero_ruedas,"\n")
+        if self.en_marcha:
+            print("Está en marcha")
+        else:
+            print("Esta parada")
+        return
+
+    def __str__(self):
+        return f"Marca: {self.marca}\nColor: {self.color}\nMatricula: {self.matricula}\nNumero de ruedas: {self.numero_ruedas}"
+
 
 def main():
     motocicleta_kawasaki = motocicleta("verde", "13445-ASDF", 2, "Kawasaki")
-    motocicleta_kawasaki.motor = True
     motocicleta_harley = motocicleta("negra", "12345-HJKL", 2, "Harley")
+    print("-------------------------")
     print("Primera motocicleta:")
-    motocicleta_kawasaki.arrancar()
+    print("-------------------------")
+    print(motocicleta_kawasaki)
     motocicleta_kawasaki.estado()
-    print("-------------------------\nSegunda motocicleta:")
+    print("-------------------------")
+    print("Segunda motocicleta:")
+    print("-------------------------")
+    print(motocicleta_harley)
     motocicleta_harley.arrancar()
     motocicleta_harley.estado()
+
+    return
+
 
 if __name__ == '__main__':
     main()
