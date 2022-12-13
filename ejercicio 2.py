@@ -14,7 +14,7 @@ import random
 class Corredor:
     def __init__(self, nombre, kms):
         self.nombre = nombre
-        self.kms_dia = dict(zip(["Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado"], kms))
+        self.kms_dia = dict(zip(["Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado", "Domingo"], kms))
 
     # Definimos la propiedad total_kms que nos devuelve la suma de kms del corredor a lo largo de la semana
     @property
@@ -24,6 +24,23 @@ class Corredor:
     # El método __str__ nos permite representar al objeto cuando se pasa a la función print()
     def __str__(self):
         return f"{self.nombre} ha realizado {self.total_kms} km en total."
+
+
+def tabla(corredores):
+    print("---------------------------------------------------------------------", end="")
+    print("\n|\tNombre\t|", end="")
+    semana = ["L", "M", "X", "J", "V", "S", "D"]
+    for dia in semana:
+        print(f"\t{dia}\t|", end="")
+    print("\n---------------------------------------------------------------------")
+
+    for corredor in corredores:
+        print(f"|\t{corredor.nombre}\t|", end="")
+        for kms in corredor.kms_dia.values():
+            print(f"\t{kms}\t|", end="")
+        print()
+    print("---------------------------------------------------------------------")
+    return
 
 
 def main():
@@ -37,15 +54,11 @@ def main():
     # Obtenemos el total de kms de cada corredor con la propiedad total_kms
     total_kms = [corredor.total_kms for corredor in corredores]
 
+    tabla(corredores)
+
     print("Corredores:")
     for corredor in corredores:
         print(corredor)
-
-    print("\nCorredor de ejemplo")
-    print(f"{corredores[0].nombre} corrió:")
-    for dia, km in corredores[0].kms_dia.items():
-        print(f"{km} kilómetros el {dia}")
-    return
 
 
 if __name__ == '__main__':
