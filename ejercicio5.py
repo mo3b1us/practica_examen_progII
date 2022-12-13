@@ -12,7 +12,7 @@ def introducir_info(datos_introducidos):
 
 
 def guardar_fich(espacio_escritura):
-    nombre_fich = espacio_escritura.get()
+    nombre_fich = espacio_escritura.get()+".xlsx"
     df = pandas.DataFrame.from_dict(datos)
     df.to_excel(nombre_fich)
     return
@@ -54,7 +54,7 @@ def main():
     save_info_frame.config(bg="lightblue")
     save_info_frame.grid(row=0, column=1, padx=20, pady=10)
 
-    etiqueta = tkinter.Label(save_info_frame, text="Ingrese nombre del archivo", bg="lightblue", )
+    etiqueta = tkinter.Label(save_info_frame, text="Ingrese nombre del archivo(se guardará automáticamente en .xlsx)", bg="lightblue", )
     etiqueta.grid(row=0, column=0, padx=10, pady=10)
 
     espacio_escritura = tkinter.Entry(save_info_frame)
